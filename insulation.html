@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Калькулятор эффективности утепления дома</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="container">
+    <h1>Калькулятор эффективности утепления дома</h1>
+    <a href="index.html" class="back-button">Вернуться на главную</a>
+  </div>
+  </header>
+  <main>
+    <div class="calculator">
+      <label for="currentHeatingCost">Текущие расходы на отопление (руб/год):</label>
+      <input type="number" id="currentHeatingCost" value="0"><br>
+
+      <label for="insulationType">Тип утеплителя:</label>
+      <select id="insulationType">
+        <option value="mineralWool">Минеральная вата</option>
+        <option value="expandedPolystyrene">Пенополистирол</option>
+        <option value="other">Другой</option>
+      </select><br>
+
+      <button onclick="calculateInsulationSavings()">Рассчитать экономию</button>
+      <p id="insulationSavings">Экономия на отоплении: 0 руб.</p>
+    </div>
+  </div>
+</main>
+  <script src="insulation.js"></script>
+</body>
+</html>

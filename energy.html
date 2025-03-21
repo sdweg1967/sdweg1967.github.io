@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор энергоэффективности</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Калькулятор энергоэффективности</h1>
+            <a href="index.html" class="back-button">Вернуться на главную</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="calculator">
+            <div class="container">
+                <h2>Рассчитайте экономию при замене ламп:</h2>
+                <form id="energyForm">
+                    <div class="form-group">
+                        <label for="old_power">Мощность старой лампы (Вт):</label>
+                        <input type="number" id="old_power" value="60" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="new_power">Мощность новой LED лампы (Вт):</label>
+                        <input type="number" id="new_power" value="10" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hours_per_day">Часов работы в день:</label>
+                        <input type="number" id="hours_per_day" value="8" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="price_per_kwh">Стоимость 1 кВт/ч:</label>
+                        <input type="number" id="price_per_kwh" value="5" required>
+                    </div>
+
+                    <button type="submit">Рассчитать экономию</button>
+                </form>
+
+                <div id="result"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Калькулятор Экономии</p>
+            
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('energyForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Предотвращаем отправку формы и перезагрузку страницы
+
+            const oldPower = parseFloat(document.getElementById('old_power').value);
+            const newPower = parseFloat(document.getElementById('new_power').value);
+            const hoursPerDay = parseFloat(document.getElementById('hours_per_day').value);
+            const pricePerKwh = parseFloat(document.getElementById('price_per_kwh').value);
+
+            if (isNaN(oldPower) || isNaN(newPower) || isNaN(hoursPerDay) || isNaN(pricePerKwh)) {
+                document.getElementById('result').innerHTML = "<p class='error'>Пожалуйста, введите корректные числовые значения.</p>";
+                return;
+            }
+
+            const oldConsumption = (oldPower / 1000) * hoursPerDay;
+            const newConsumption = (newPower / 1000) * hoursPerDay;
+
+            const dailySavings = (oldConsumption - newConsumption) * pricePerKwh;
+            const monthlySavings = dailySavings * 30;
+            const yearlySavings = monthlySavings * 12;
+
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `
+                <p>Ежедневная экономия: <span class="savings-value">${dailySavings.toFixed(2)}</span> руб.</p>
+                <p>Ежемесячная экономия: <span class="savings-value">${monthlySavings.toFixed(2)}</span> руб.</p>
+                <p>Годовая экономия: <span class="savings-value">${yearlySavings.toFixed(2)}</span> руб.</p>
+            `;
+        });
+    </script>
+</body>
+</html>

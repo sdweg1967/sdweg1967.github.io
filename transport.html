@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор транспортных расходов</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Калькулятор транспортных расходов</h1>
+            <a href="index.html" class="back-button">Вернуться на главную</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section id="calculator">
+                <h2>Расчет транспортных расходов</h2>
+
+                <div class="calculator-section">
+                    <h3>Автомобиль</h3>
+                    <form id="car-form">
+                        <label for="carDistance">Расстояние в месяц (км):</label>
+                        <input type="number" id="carDistance" name="carDistance" value="0"><br>
+
+                        <label for="carFuelConsumption">Расход топлива (л/100км):</label>
+                        <input type="number" id="carFuelConsumption" name="carFuelConsumption" value="0"><br>
+
+                        <label for="fuelPrice">Цена топлива (руб/л):</label>
+                        <input type="number" id="fuelPrice" name="fuelPrice" value="0"><br>
+
+                        <button type="button" onclick="calculateCarCost()">Рассчитать стоимость автомобиля</button>
+                        <div class="result-section" id="carCost">Стоимость автомобиля в месяц: 0 руб.</div>
+                    </form>
+                </div>
+
+                <div class="calculator-section">
+                    <h3>Общественный транспорт</h3>
+                    <form id="public-transport-form">
+                        <label for="publicTransportTrips">Количество поездок в месяц:</label>
+                        <input type="number" id="publicTransportTrips" name="publicTransportTrips" value="0"><br>
+
+                        <label for="publicTransportPrice">Стоимость одной поездки (руб):</label>
+                        <input type="number" id="publicTransportPrice" name="publicTransportPrice" value="0"><br>
+
+                        <button type="button" onclick="calculatePublicTransportCost()">Рассчитать стоимость общественного транспорта</button>
+                        <div class="result-section" id="publicTransportCost">Стоимость общественного транспорта в месяц: 0 руб.</div>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            © 2025 Калькулятор транспортных расходов
+        </div>
+    </footer>
+
+    <script src="transport.js"></script>
+
+</body>
+</html>
